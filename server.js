@@ -21,7 +21,7 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
-app.use("/curConverter", currencyRouter);
+app.use("/curconverter", currencyRouter);
 
 const PORT = process.env.PORT || 3000;
 

@@ -8,9 +8,9 @@ router.get('/', async function(req, res) {
   try {
     await dbHelper.checkDb();
 
-    const sourceCurrency = req.query.sourceCurrency;
-    const sourceAmount = req.query.sourceAmount;
-    const targetCurrency = req.query.targetCurrency;
+    const sourceCurrency = req.query.sourcecurrency;
+    const sourceAmount = req.query.sourceamount;
+    const targetCurrency = req.query.targetcurrency;
     const [converted, exchangeRate] = await mathHelper.convertMoney(sourceCurrency, sourceAmount, targetCurrency);
     
     dbHelper.saveTransaction(sourceCurrency, sourceAmount,exchangeRate, targetCurrency)
