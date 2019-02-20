@@ -1,11 +1,11 @@
 # Money converter
 
-  RestfullAPI for converting money between differenect currencies.
-  The central bank of europe provide daily data related to the exchange rates between EURO and 
-  different currinices.
-  our service get the new data by scheduling a cron job for bringing the data everyday ar 16:00,
+  RestfullAPI for converting money between different currencies.
+  The central bank of europe provides daily data related to the exchange rates between EURO and 
+  different currencies.
+  our service gets the new data by scheduling a cron job for bringing the data everyday at 16:00,
   the provided data by the central bank contains only the exchange rate between EURO and the other currincies,
-  our service extracts the remaining exchange rates by comparing them to EURO.
+  our service extracts the other exchange rates by comparing them to EURO.
 
 
 
