@@ -10,6 +10,11 @@ router.get('/', async function (req, res, next) {
       success: 'false',
       message: 'sourceammount, targetcurrency and sourcecurrency are required '
     })
+  } else if (isNaN(req.query.sourceamount)) {
+    return res.status(400).send({
+      success: 'false',
+      message: 'Enter valid sourceammount '
+    })
   }
 
   try {
