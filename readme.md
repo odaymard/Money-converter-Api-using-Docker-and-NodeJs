@@ -45,7 +45,7 @@ And by using tool like postman we can send requests to our server on our default
 
 
 ``
-Method:GET http://localhost:3001/curconverter?sourceamount=103&sourcecurrency=EURO&targetcurrency=JPY
+Method:GET http://localhost:3001/currencies?sourceamount=103&sourcecurrency=EURO&targetcurrency=JPY
 ``
 
 it will give the equal ammount of money in the USD.
