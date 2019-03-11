@@ -6,23 +6,18 @@ const dbHelper = require("../helpers/dbHelper").dbHelper;
 
 router.get('/', async function (req, res, next) {
   if (!req.query.sourcecurrency || !req.query.sourceamount || !req.query.targetcurrency) {
-    return res.status(400).send({
-      success: 'false',
-      message: 'sourceammount, targetcurrency and sourcecurrency are required '
-    })
+    return errorMessage(res, 'Enter a valid sourceamount')
   } else if (isNaN(req.query.sourceamount)) {
-    return res.status(400).send({
-      success: 'false',
-      message: 'Enter valid sourceammount '
-    })
+     return errorMessage(res,'Enter valid sourceammount')
+ 
   }
 
   try {
     await dbHelper.checkDb();
 
-    const sourceCurrency = req.query.sourcecurrency;
+    const sourceCurrency = req.query.sourcecurrency.toUpperCase();
     const sourceAmount = req.query.sourceamount;
-    const targetCurrency = req.query.targetcurrency;
+    const targetCurrency = req.query.targetcurrency.toUpperCase();
     const [converted, exchangeRate] = await mathHelper.convertMoney(sourceCurrency, sourceAmount, targetCurrency);
 
     dbHelper.saveTransaction(sourceCurrency, sourceAmount, exchangeRate, targetCurrency)
@@ -37,5 +32,12 @@ router.get('/', async function (req, res, next) {
   }
 });
 
+
+function errorMessage(res, message){
+  res.status(400).send({ //errorMessage(res, message)
+       success: 'false',
+       message: message
+     })
+}
 
 module.exports = router;
